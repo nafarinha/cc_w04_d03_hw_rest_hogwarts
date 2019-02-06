@@ -15,10 +15,12 @@ get '/hogwarts' do
 end
 
 get '/hogwarts/new' do
+  @houses = House.all()
   erb(:new)
 end
 
 post '/hogwarts' do
   @student = Student.new(params)
   @student.save
+  erb(:create)
 end

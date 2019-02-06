@@ -8,7 +8,7 @@ class House
 attr_reader :id, :name, :url
 
   def initialize(options)
-    @id = options["id"].to_i
+    @id = options["id"].to_i if options["id"]
     @name = options['name']
     @url = options['url']
   end
@@ -23,7 +23,7 @@ attr_reader :id, :name, :url
     (
       $1, $2
     )
-    RETURNING *"
+    RETURNING id"
     values = [@name, @url]
     house = SqlRunner.run(sql, values)
     @id = house.first()['id'].to_i
@@ -42,6 +42,11 @@ attr_reader :id, :name, :url
     house = SqlRunner.run( sql, values )
     result = House.new( house.first )
     return result
+  end
+
+  def self.delete_all()
+   sql = "DELETE FROM houses"
+   SqlRunner.run(sql)
   end
 
 

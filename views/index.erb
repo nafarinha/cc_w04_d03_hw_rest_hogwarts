@@ -1,4 +1,6 @@
 <% @students.each do |student| %>
-<p>Full Name: <%= student.pretty_name %></p>
+<p><b>Full Name:</b> <%= student.pretty_name %></p>
+<p><b>House:</b> <%= student.house()["name"] %></p>
+<img src="<%= student.house()["url"] %>" alt="Hogwarts house colours">
 <hr />
 <%end%>

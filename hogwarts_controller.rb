@@ -21,4 +21,4 @@ end
 post '/hogwarts' do
   @student = Student.new(params)
   @student.save
-end 
+end

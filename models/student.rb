@@ -20,6 +20,7 @@ class Student
     return "#{@first_name} #{@last_name}"
   end
 
+#: 07/02/2019, 09:48:24 instead of a sql statement for the house function, we can simply call the house method House.find(@house_id)
   def house()
     sql = "SELECT h.* FROM houses h
       INNER JOIN students s
